@@ -20,5 +20,6 @@ public:
     void Restart() {isInMainMenu = true;}
 
     void Update();
-    void Draw();
+
+    static void Draw(float bestScore);
 };

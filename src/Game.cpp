@@ -12,6 +12,7 @@ Game::~Game() {
 
 void Game::Restart() {
     if (cardBoard.IsAllMatched()) {
+        speedTimer.SaveScore();
         cardBoard.Restart();
         mainMenu.Restart();
     }
@@ -22,14 +23,16 @@ void Game::Run() {
         if (mainMenu.GetIsInMainMenu()) {
             BeginDrawing();
             ClearBackground(DARKGRAY);
-            mainMenu.Draw();
+            mainMenu.Draw(speedTimer.GetBestScore());
             mainMenu.Update();
             EndDrawing();
         } else {
+            speedTimer.Update();
             BeginDrawing();
             ClearBackground(DARKGRAY);
             cardBoard.Draw();
             cardBoard.Update();
+            speedTimer.Draw();
             Restart();
             EndDrawing();
         }

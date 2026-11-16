@@ -11,6 +11,8 @@ add_executable(MemoryMatch src/main.cpp
         src/CardBoard.cpp
         src/CardBoard.h
         src/MainMenu.cpp
-        src/MainMenu.h)
+        src/MainMenu.h
+        src/SpeedTimer.cpp
+        src/SpeedTimer.h)
 
 target_link_libraries(MemoryMatch PRIVATE raylib)
