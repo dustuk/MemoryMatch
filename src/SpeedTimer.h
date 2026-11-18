@@ -14,6 +14,7 @@ public:
     void SaveScore();
 
     void ResetScore() {score = 0;}
+    void ResetBestScore() const;
     float GetBestScore();
 
     void Update();

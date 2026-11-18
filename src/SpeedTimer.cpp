@@ -9,9 +9,8 @@ void SpeedTimer::OpenScoreFile() {
         std::ofstream oFile(path);
         oFile << score;
         oFile.close();
-    }
-
-    if (iFile.is_open()) {
+        bestScore = score;
+    } else {
         iFile >> bestScore;
         iFile.close();
     }
@@ -27,6 +26,12 @@ void SpeedTimer::SaveScore() {
         }
     }
 
+}
+
+void SpeedTimer::ResetBestScore() const {
+    std::ofstream oFile(path);
+    oFile << score;
+    oFile.close();
 }
 
 float SpeedTimer::GetBestScore() {

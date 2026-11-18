@@ -12,6 +12,8 @@ public:
     Game(int width, int height, const char* title);
     ~Game();
 
+    void ResetScore();
+
     void Restart();
 
     void Run();

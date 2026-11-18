@@ -10,9 +10,17 @@ Game::~Game() {
     CloseWindow();
 }
 
+void Game::ResetScore() {
+    if (mainMenu.ShouldRestScore()) {
+        speedTimer.ResetScore();
+        speedTimer.ResetBestScore();
+    }
+}
+
 void Game::Restart() {
     if (cardBoard.IsAllMatched()) {
         speedTimer.SaveScore();
+        speedTimer.ResetScore();
         cardBoard.Restart();
         mainMenu.Restart();
     }
@@ -23,8 +31,9 @@ void Game::Run() {
         if (mainMenu.GetIsInMainMenu()) {
             BeginDrawing();
             ClearBackground(DARKGRAY);
-            mainMenu.Draw(speedTimer.GetBestScore());
+            MainMenu::Draw(speedTimer.GetBestScore());
             mainMenu.Update();
+            ResetScore();
             EndDrawing();
         } else {
             speedTimer.Update();
